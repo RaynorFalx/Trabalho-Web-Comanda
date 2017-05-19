@@ -4,7 +4,7 @@
         <title>Comanda Web: Mesas </title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/reset.css">
@@ -204,41 +204,44 @@
 
   		});
 
-  	var count = ($('.content').size() +1);
-    $("#btn-add").click(function () {
-    	
-		var div;
-		if(count%5 === 0){
-			div = 'div';  // Quebra de linha se o botão for múltiplo de 5
-		}
-		else {
-			div = 'x';
-		}
-        var btnMesa = $(document.createElement(div)).attr('class','content').attr("id", 'divRemover' + count);
-             
-        btnMesa.html('<input type="button" id="idMesa' + count + ' " value="'+ count + '"class="btn-mesa" data-toggle="modal" data-target="#myModal">');
+ 	$(document).ready(function(){
 
-        btnMesa.appendTo("#Mesas");
-             
-        count++;
+	  	var count = ($('.content').size() +1);
+
+	    $("#btn-add").click(function () {
+	    	
+			var div;
+			if(count%5 === 0){
+				div = 'div';  // Quebra de linha se o botão for múltiplo de 5
+			}
+			else {
+				div = 'x';
+			}
+	        var btnMesa = $(document.createElement(div)).attr('class','content').attr("id", 'divRemover' + count);
+	             
+	        btnMesa.html('<input type="button" id="idMesa' + count + ' " value="'+ count + '"class="btn-mesa" data-toggle="modal" data-target="#myModal">');
+
+	        btnMesa.appendTo("#Mesas");
+	             
+	        count++;
+				
+
+	    });
+
+	    $("#btn-remover").click(function () {
+			if(count > 1){          //Isso aqui pro contador não ficar zoado
+				count--;   
+			}
+			else{
+				count = 1;
+			}
 			
-
-    });
-
-
-    $("#btn-remover").click(function () {
-		if(count > 1){          //Isso aqui pro contador não ficar zoado
-			count--;   
-		}
-		else{
-			count = 1;
-		}
-		
-     //count--
-	 ;
-     
-    $("#divRemover" + count).remove();        //tchau botão
-     });
+	     //count--
+		 ;
+	     
+	    $("#divRemover" + count).remove();        //tchau botão
+	     });
+	});
 
     </script>
 
